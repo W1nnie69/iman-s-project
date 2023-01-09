@@ -15,7 +15,7 @@ def read_csv_row(row_number):          #This function ables you to specify which
         
 
 
-def printcolumnname():
+def printcolumnname():                                 #column names as in "Fuel type" and the years
     with open('annualmvpop_dataset.csv', 'r') as f:
         reader = csv.reader(f, delimiter=',')
         for i, row in enumerate(reader):
@@ -96,54 +96,51 @@ while loop == True:
                 
     
     elif option1 == "2":
-        global foc
-        os.system("cls")
+        # global foc
+        # os.system("cls")
 
-        print("1) Diesel")
-        print("2) Diesel-Electric")
-        print("3) Electric")
-        print("4) Petrol")
-        print("5) Petrol-CNG")
-        print("6) Petrol-Electric")
-        print("7) Petrol-Electric (Plug-In)")
-        print("")
+        # print("1) Diesel")
+        # print("2) Diesel-Electric")
+        # print("3) Electric")
+        # print("4) Petrol")
+        # print("5) Petrol-CNG")
+        # print("6) Petrol-Electric")
+        # print("7) Petrol-Electric (Plug-In)")
+        # print("")
 
         
-        x = gettingmeanvalueofselectedfueltype()
+        # x = gettingmeanvalueofselectedfueltype()
         
-        y = int(x)
+        # y = int(x)
 
-        print("")
+        # print("")
 
-        input("Press Enter to Continue")
+        # input("Press Enter to Continue")
         
-        print("")
+        # print("")
 
-        with open("annualmvpop_dataset.csv", "r") as f:  #This is the part that answers Q2 part B aka, finding other values that are higher than the mean above
-            csvfile = csv.reader(f, delimiter=",")       
-            next(csvfile)   
-            for i, row in enumerate(csvfile):           
-                slicing = row[3:8]
-                cutdata =  tuple(map(int, slicing))     
+        # with open("annualmvpop_dataset.csv", "r") as f:  #This is the part that answers Q2 part B aka, finding other values that are higher than the mean above
+        #     csvfile = csv.reader(f, delimiter=",")       
+        #     next(csvfile)   
+        #     for i, row in enumerate(csvfile):           
+        #         slicing = row[3:8]
+        #         cutdata =  tuple(map(int, slicing))     
 
 
            
-                for value in cutdata:
+        #         for value in cutdata:
 
-                    if value > y:
-                        print(value)
+        #             if value > y:
+        #                 print(value)
                     
 
-                
-
-
-                
-
-            
+        #     break
+        os.system("cls")
+        with open("annualmvpop_dataset.csv", "r") as f:     #converts the raw csv to python dict
+            csvdata = csv.DictReader(f, delimiter=",")
+            list1 = list(csvdata)
         
-                
-
-        
+        print(list1)
         
         break
        
