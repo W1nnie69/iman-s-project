@@ -62,11 +62,11 @@ def gettingmeanvalueofselectedfueltype():
 def menu():
     global option1 
     #os.system("cls")
-    time.sleep(0.5)
-    with open("annualmvpop_dataset.csv", "r") as f:
-        csvfile = csv.reader(f)
-        for line in csvfile:
-            print(line)
+    # time.sleep(0.5)
+    # with open("annualmvpop_dataset.csv", "r") as f:
+    #     csvfile = csv.reader(f)
+    #     for line in csvfile:
+    #         print(line)
 
     print("")
     print(" -------------------------------------------------------")
@@ -76,74 +76,80 @@ def menu():
     print("| 4)Graphing shit                                       |")
     print(" -------------------------------------------------------")
 
-    option1 = input("Please eneter which an option:" ) 
+    option1 = input("Please enter which an option:" ) 
 
     loop = True
     while loop == True:
 
         if option1 == "1":
-            with open("annualmvpop_dataset.csv", "r") as f:
-                csvdata = csv.reader(f)
-            for row in csvdata:
+            row = read_csv_row(6)
+            output = ', '.join(map(str, row))
+            print(output)
 
-                print(row)
 
             time.sleep(1)
             menu()
                 
     
         elif option1 == "2":
-            global foc
-            # os.system("cls")
+            # global foc
+            # # os.system("cls")
 
-            print("1) Diesel")
-            print("2) Diesel-Electric")
-            print("3) Electric")
-            print("4) Petrol")
-            print("5) Petrol-CNG")
-            print("6) Petrol-Electric")
-            print("7) Petrol-Electric (Plug-In)")
-            print("")
+            # print("1) Diesel")
+            # print("2) Diesel-Electric")
+            # print("3) Electric")
+            # print("4) Petrol")
+            # print("5) Petrol-CNG")
+            # print("6) Petrol-Electric")
+            # print("7) Petrol-Electric (Plug-In)")
+            # print("")
 
         
-            x = gettingmeanvalueofselectedfueltype()
+            # x = gettingmeanvalueofselectedfueltype()
             
-            y = int(x)
+            # y = int(x)
 
-            print("")
+            # print("")
 
-            input("Press Enter to Continue")
+            # input("Press Enter to Continue")
             
-            print("")
+            # print("")
 
-            with open("annualmvpop_dataset.csv", "r") as f:  #This is the part that answers Q2 part B aka, finding other values that are higher than the mean above
-                csvfile = csv.reader(f, delimiter=",")       
-                next(csvfile)   
-                for i, row in enumerate(csvfile):           
-                    slicing = row[3:8]
-                    cutdata =  tuple(map(int, slicing))     
+            # with open("annualmvpop_dataset.csv", "r") as f:  #This is the part that answers Q2 part B aka, finding other values that are higher than the mean above
+            #     csvfile = csv.reader(f, delimiter=",")       
+            #     next(csvfile)   
+            #     for i, row in enumerate(csvfile):           
+            #         slicing = row[3:8]
+            #         cutdata =  tuple(map(int, slicing))     
 
 
             
-                    for value in cutdata:
+            #         for value in cutdata:
 
-                        if value > y:
-                            print(value)
+            #             if value > y:
+            #                 print(value)
                     
 
         
             # os.system("cls")
             with open("annualmvpop_dataset.csv", "r") as f:     #converts the raw csv to python dict
                 csvdata = csv.DictReader(f, delimiter=",")
-                list1 = list(csvdata)
-            
-            print(list1)
-            
+                data = [row for row in csvdata]
+                
+                fuel_type = 'Diesel'
+                years = ['2006', '2007', '2008', '2009', '2010']
+
+                for dictionary in data:
+                    if dictionary.get("Fuel Type") == fuel_type:
+                        for year in years:
+                            if year in dictionary:
+                                value = dictionary[year]
+                                print(year, value)
+                                
             break
 
 
 menu()
-       
 
 
 
