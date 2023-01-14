@@ -56,6 +56,44 @@ def gettingmeanvalueofselectedfueltype():
     return meanvalue
 
 
+def iman():
+    with open("annualmvpop_dataset.csv", "r") as f:     #converts the raw csv to python dict
+        csvdata = csv.DictReader(f, delimiter=",")
+        data = [row for row in csvdata]
+
+        fuel_type = 'Diesel'
+        years = ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018']
+        valuelist = []
+
+        # for dictionary in data:
+        #     if dictionary.get("Fuel Type") == fuel_type:
+        for i in data:
+            for year in years:
+                if year in data:
+                    # if meanvaluetwo > x:
+                    print(year)
+                    value = data[year]
+                    valuelist.append(value)
+
+                    
+                
+
+                
+                    # ','.join(map(str, years)):<20
+
+
+            # print("Fuel Type", f"{', ':<0}".join(map(str, years)))
+            
+            # print(f"{', ':<0}".join(map(str, valuelist)))      
+                    
+            # break
+
+
+
+
+
+
+
 
 
 
@@ -115,6 +153,9 @@ def menu():
             
             # print("")
 
+            iman()
+
+            break
             # with open("annualmvpop_dataset.csv", "r") as f:  #This is the part that answers Q2 part B aka, finding other values that are higher than the mean above
             #     csvfile = csv.reader(f, delimiter=",")       
             #     next(csvfile)   
@@ -132,21 +173,35 @@ def menu():
 
         
             # os.system("cls")
-            with open("annualmvpop_dataset.csv", "r") as f:     #converts the raw csv to python dict
-                csvdata = csv.DictReader(f, delimiter=",")
-                data = [row for row in csvdata]
-                
-                fuel_type = 'Diesel'
-                years = ['2006', '2007', '2008', '2009', '2010']
 
-                for dictionary in data:
-                    if dictionary.get("Fuel Type") == fuel_type:
-                        for year in years:
-                            if year in dictionary:
-                                value = dictionary[year]
-                                print(year, value)
+
+
+            # with open("annualmvpop_dataset.csv", "r") as f:     #converts the raw csv to python dict
+            #     csvdata = csv.DictReader(f, delimiter=",")
+            #     data = [row for row in csvdata]
+                
+            #     fuel_type = 'Diesel'
+            #     years = ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018']
+            #     valuelist = []
+
+            #     for dictionary in data:
+            #         if dictionary.get("Fuel Type") == fuel_type:
+            #             for year in years:
+            #                 if year in dictionary:
+            #                     # if value > x:
                                 
-            break
+            #                     value = dictionary[year]
+            #                     valuelist.append(value)
+
+                            
+            #                     # ','.join(map(str, years)):<20
+
+
+            #             print(f"{', ':<0}".join(map(str, years)))
+                        
+            #             print(fuel_type, f"{', ':<0}".join(map(str, valuelist)))      
+                                
+            #     break
 
 
 menu()
