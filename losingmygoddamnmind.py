@@ -54,39 +54,47 @@ def gettingmeanvalueofselectedfueltype():
     print("mean: ", meanvalue)
 
     return meanvalue
+ #converts the raw csv to python dict
 
-
-def iman():
-    with open("annualmvpop_dataset.csv", "r") as f:     #converts the raw csv to python dict
+def iman(meanvaluefrommenu):
+    with open("annualmvpop_dataset.csv", "r") as f:    
         csvdata = csv.DictReader(f, delimiter=",")
         data = [row for row in csvdata]
 
-        fuel_type = 'Diesel'
+        # fuel_type = 'Diesel'
         years = ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018']
+
         valuelist = []
+        
+        # print(data)
 
         # for dictionary in data:
         #     if dictionary.get("Fuel Type") == fuel_type:
-        for i in data:
+        # data = sorted(data, key=lambda x: x['year'])
+
+        for row in data:
+            fuel_type = row['Fuel Type']
             for year in years:
-                if year in data:
-                    # if meanvaluetwo > x:
-                    print(year)
-                    value = data[year]
-                    valuelist.append(value)
+                if year in row:
+                    value = row[year]
+                    if int(value) > meanvaluefrommenu:
 
-                    
+                        valuelist.append((value))
+
+           
+
                 
-
-                
-                    # ','.join(map(str, years)):<20
-
-
-            # print("Fuel Type", f"{', ':<0}".join(map(str, years)))
             
-            # print(f"{', ':<0}".join(map(str, valuelist)))      
-                    
-            # break
+
+            
+                # ','.join(map(str, years)):<20
+
+
+        # print("Fuel Type", f"{', ':<0}".join(map(str, years)))
+        
+        print(f"{', ':<1}".join(map(str, valuelist)))      
+                
+        # break
 
 
 
@@ -130,30 +138,29 @@ def menu():
                 
     
         elif option1 == "2":
-            # global foc
-            # # os.system("cls")
+            # os.system("cls")
 
-            # print("1) Diesel")
-            # print("2) Diesel-Electric")
-            # print("3) Electric")
-            # print("4) Petrol")
-            # print("5) Petrol-CNG")
-            # print("6) Petrol-Electric")
-            # print("7) Petrol-Electric (Plug-In)")
-            # print("")
+            print("1) Diesel")
+            print("2) Diesel-Electric")
+            print("3) Electric")
+            print("4) Petrol")
+            print("5) Petrol-CNG")
+            print("6) Petrol-Electric")
+            print("7) Petrol-Electric (Plug-In)")
+            print("")
 
         
-            # x = gettingmeanvalueofselectedfueltype()
+            x = gettingmeanvalueofselectedfueltype()
             
-            # y = int(x)
+            y = int(x)
 
-            # print("")
+            print("")
 
-            # input("Press Enter to Continue")
+            input("Press Enter to Continue")
             
-            # print("")
+            print("")
 
-            iman()
+            iman(y)
 
             break
             # with open("annualmvpop_dataset.csv", "r") as f:  #This is the part that answers Q2 part B aka, finding other values that are higher than the mean above
