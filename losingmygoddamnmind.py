@@ -108,10 +108,11 @@ def menu():
     global option1 
     #os.system("cls")
     # time.sleep(0.5)
-    # with open("annualmvpop_dataset.csv", "r") as f:
-    #     csvfile = csv.reader(f)
-    #     for line in csvfile:
-    #         print(line)
+    print("")
+    with open("annualmvpop_dataset.csv", "r") as f:
+        csvfile = csv.reader(f)
+        for line in csvfile:
+            print(line)
 
     print("")
     print(" -------------------------------------------------------------------------------------------------------------------")
