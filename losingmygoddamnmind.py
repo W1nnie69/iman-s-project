@@ -79,7 +79,7 @@ def iman(meanvaluefrommenu):
                     value = row[year]
                     if int(value) > meanvaluefrommenu:
 
-                        valuelist.append((value))
+                        valuelist.append((fuel_type, year, value))
 
            
 
@@ -115,12 +115,13 @@ def menu():
     #         print(line)
 
     print("")
-    print(" -------------------------------------------------------")
-    print("| 1)Vehicle Population of fuel type from 2006 - 2018    |")                      
-    print("| 2)Select fuel type to display                         |")
-    print("| 3)Find which fuel type has decreased by at least 5%   |")
-    print("| 4)Graphing shit                                       |")
-    print(" -------------------------------------------------------")
+    print(" -------------------------------------------------------------------------------------------------------------------")
+    print("| 1)Vehicle Population of Petrol-ELectric fuel type from 2006 - 2018                                                |")                      
+    print("| 2)Mean of selected vehicle fuel type from 2008-2012 | Years and vehicle population which exceeded the mean        |")
+    print("| 3)Fuel type of vehicle and year which has decreased by at least 5%                                                |")
+    print("| 4)Line plot of Petrol-Electric and Petrol-CNG for each year and bar chart of Petrol-Electric and Diesel           |")
+    print("| 5)Quit                                                                                                            |")
+    print(" -------------------------------------------------------------------------------------------------------------------")
 
     option1 = input("Please enter which an option:" ) 
 
@@ -209,6 +210,9 @@ def menu():
             #             print(fuel_type, f"{', ':<0}".join(map(str, valuelist)))      
                                 
             #     break
+            
+        elif option1 == "5":
+            exit()
 
 
 menu()
