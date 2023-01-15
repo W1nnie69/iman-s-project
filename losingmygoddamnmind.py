@@ -132,8 +132,9 @@ def menu():
             output = ', '.join(map(str, row))
             print(output)
 
-
-            time.sleep(1)
+            print("")
+            input("Press Enter to Continue")
+            
             menu()
                 
     
@@ -162,7 +163,8 @@ def menu():
 
             iman(y)
 
-            time.sleep(1)
+            print("")
+            input("Press Enter to Continue")
 
             menu()
             
