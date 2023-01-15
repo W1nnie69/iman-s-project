@@ -1,6 +1,6 @@
 import csv
 import time
-import os
+from sys import exit
 
 
 
