@@ -6,27 +6,27 @@ from sys import exit
 
 
 
-def read_csv_row(row_number):          #This function ables you to specify which row from the csv you wanna output
+def read_csv_row(row_number):                                     #This function ables you to specify which row from the csv you wanna output
     with open('annualmvpop_dataset.csv', 'r') as f:               #Opens the csv                       
-        reader = csv.reader(f, delimiter=",")     #Reads the csv, data of csv = "reader"
-        for i, row in enumerate(reader):          #Emuerates the data and returns an iterator that produces tuples containing 
+        reader = csv.reader(f, delimiter=",")                     #Reads the csv, data of csv = "reader"
+        for i, row in enumerate(reader):                          #Emuerates the data and returns an iterator that produces tuples containing 
             if i == row_number:
-                return row                #the index and the value of each element of the object.
+                return row                                        #the index and the value of each element of the object.
         
 
 
-def printcolumnname():                                 #column names as in "Fuel type" and the years
-    with open('annualmvpop_dataset.csv', 'r') as f:
-        reader = csv.reader(f, delimiter=',')
-        for i, row in enumerate(reader):
-            if i == 0:
-                output = ', '.join(map(str, row))
-                print(output)
+# def print_column_name():                                 #column names as in "Fuel type" and the years
+#     with open('annualmvpop_dataset.csv', 'r') as f:
+#         reader = csv.reader(f, delimiter=',')
+#         for i, row in enumerate(reader):
+#             if i == 0:
+#                 output = ', '.join(map(str, row))
+#                 print(output)
 
 
 
 
-def gettingmeanvalueofselectedfueltype():
+def mean_value_of_selected_fuel_type():
     userinput = input("Select a fuel type:" )
     
 
@@ -58,7 +58,7 @@ def gettingmeanvalueofselectedfueltype():
 
 
 
-def iman(meanvaluefrommenu):
+def valuesabovemean(meanvaluefrommenu):
     with open("annualmvpop_dataset.csv", "r") as f:    
         csvdata = csv.DictReader(f, delimiter=",")
         data = [row for row in csvdata]
@@ -152,7 +152,7 @@ def menu():
             print("")
 
         
-            x = gettingmeanvalueofselectedfueltype()
+            x = mean_value_of_selected_fuel_type()
             
             y = int(x)
 
@@ -162,7 +162,7 @@ def menu():
             
             print("")
 
-            iman(y)
+            valuesabovemean(y)
 
             print("")
             input("Press Enter to Continue")
