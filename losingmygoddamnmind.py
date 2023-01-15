@@ -1,6 +1,7 @@
 import csv
 import time
 from sys import exit
+import matplotlib.pyplot as plt
 
 
 
@@ -98,12 +99,6 @@ def valuesabovemean(meanvaluefrommenu):
 
 
 
-
-
-
-
-
-
 def menu():
     global option1 
     #os.system("cls")
@@ -185,9 +180,89 @@ def menu():
 
         
         elif option1 == "4":
-            print("still in testing")
-            break
+            print(" -----------------------------------------------------")
+            print("|A) Petrol-Electric and Petrol-CNG vehicle population |")
+            print("|B) Petrol-Electric and Diesel population             |")
+            print(" -----------------------------------------------------")
+            option2 = input("Select option A or B:" )
 
+
+            if option2 == "A":
+
+                years = [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018]
+                petrol_electric_population = []
+                petrol_cng_population = []
+
+                row1 = read_csv_row(6)
+                rowsliced1 = row1[1:]
+                convertrow1 = tuple(map(int, rowsliced1))
+
+                row2 = read_csv_row(5)
+                rowsliced2 = row2[1:]
+                convertrow2 = tuple(map(int, rowsliced2))
+
+
+                petrol_electric_population = list(convertrow1)
+                petrol_cng_population = list(convertrow2)
+
+
+                print(petrol_electric_population)
+                print(petrol_cng_population)
+
+
+                plt.plot(years, petrol_electric_population, label='Petrol-Electric')
+                plt.plot(years, petrol_cng_population, label='Petrol-CNG')
+
+
+                plt.xlabel('Year')
+                plt.ylabel('Population')
+                plt.title('Difference between Petrol-Electric and Petrol-CNG vehicle population')
+                plt.legend()
+                plt.show()
+
+
+                print("")
+                input("Press Enter to Continue")
+
+                menu()
+            
+            if option2 == "B":
+
+                years = [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018]
+                petrol_electric_population = []
+                diesel_population = []
+
+                row1 = read_csv_row(6)
+                rowsliced1 = row1[1:]
+                convertrow1 = tuple(map(int, rowsliced1))
+
+                row2 = read_csv_row(1)
+                rowsliced2 = row2[1:]
+                convertrow2 = tuple(map(int, rowsliced2))
+
+
+                petrol_electric_population = list(convertrow1)
+                diesel_population = list(convertrow2)
+
+
+                print(petrol_electric_population)
+                print(diesel_population)
+
+
+                plt.bar(years, petrol_electric_population, label='Petrol-Electric')
+                plt.bar(years, diesel_population, label='Diesel')
+
+
+                plt.xlabel('Year')
+                plt.ylabel('Population')
+                plt.title('Difference between Petrol-Electric and Diesel vehicle population')
+                plt.legend()
+                plt.show()
+                
+                print("")
+                input("Press Enter to Continue")
+
+                menu()
 
             
 
