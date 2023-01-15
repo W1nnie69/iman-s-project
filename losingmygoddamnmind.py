@@ -56,6 +56,8 @@ def gettingmeanvalueofselectedfueltype():
     return meanvalue
  #converts the raw csv to python dict
 
+
+
 def iman(meanvaluefrommenu):
     with open("annualmvpop_dataset.csv", "r") as f:    
         csvdata = csv.DictReader(f, delimiter=",")
@@ -79,22 +81,19 @@ def iman(meanvaluefrommenu):
                     value = row[year]
                     if int(value) > meanvaluefrommenu:
 
-                        valuelist.append((fuel_type, year, value))
-
-           
-
+                        valuelist.append((fuel_type, year, value))      
                 
-            
 
-            
-                # ','.join(map(str, years)):<20
+        format_string = "{:<27} {:<10} {:<10}"
 
+        # Print the header
+        print(format_string.format("Fuel Type", "Year", "Population"))
 
-        # print("Fuel Type", f"{', ':<0}".join(map(str, years)))
+        # Print the values
+        for item in valuelist:
+
+            print(format_string.format(item[0], item[1], item[2]))
         
-        print(f"{', ':<1}".join(map(str, valuelist)))      
-                
-        # break
 
 
 
@@ -163,54 +162,32 @@ def menu():
 
             iman(y)
 
-            break
-            # with open("annualmvpop_dataset.csv", "r") as f:  #This is the part that answers Q2 part B aka, finding other values that are higher than the mean above
-            #     csvfile = csv.reader(f, delimiter=",")       
-            #     next(csvfile)   
-            #     for i, row in enumerate(csvfile):           
-            #         slicing = row[3:8]
-            #         cutdata =  tuple(map(int, slicing))     
+            time.sleep(1)
 
-
+            menu()
             
-            #         for value in cutdata:
-
-            #             if value > y:
-            #                 print(value)
-                    
 
         
             # os.system("cls")
 
 
-
-            # with open("annualmvpop_dataset.csv", "r") as f:     #converts the raw csv to python dict
-            #     csvdata = csv.DictReader(f, delimiter=",")
-            #     data = [row for row in csvdata]
-                
-            #     fuel_type = 'Diesel'
-            #     years = ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018']
-            #     valuelist = []
-
-            #     for dictionary in data:
-            #         if dictionary.get("Fuel Type") == fuel_type:
-            #             for year in years:
-            #                 if year in dictionary:
-            #                     # if value > x:
-                                
-            #                     value = dictionary[year]
-            #                     valuelist.append(value)
-
-                            
-            #                     # ','.join(map(str, years)):<20
+        elif option1 == "3":
+            print("still in testing")
+            break
 
 
-            #             print(f"{', ':<0}".join(map(str, years)))
-                        
-            #             print(fuel_type, f"{', ':<0}".join(map(str, valuelist)))      
-                                
-            #     break
+
+
+
+
+        
+        elif option1 == "4":
+            print("still in testing")
+            break
+
+
             
+
         elif option1 == "5":
             exit()
 
