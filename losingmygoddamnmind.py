@@ -1,7 +1,7 @@
 import csv
-import time
 from sys import exit
 import matplotlib.pyplot as plt
+import time
 
 
 
@@ -16,14 +16,6 @@ def read_csv_row(row_number):                                     #This function
         
 
 
-# def print_column_name():                                 #column names as in "Fuel type" and the years
-#     with open('annualmvpop_dataset.csv', 'r') as f:
-#         reader = csv.reader(f, delimiter=',')
-#         for i, row in enumerate(reader):
-#             if i == 0:
-#                 output = ', '.join(map(str, row))
-#                 print(output)
-
 
 
 
@@ -31,15 +23,15 @@ def mean_value_of_selected_fuel_type():
     userinput = input("Select a fuel type:" )
     
 
-    rowprint = read_csv_row(int(userinput))       #prints the fuel row, showing the values
-    rowprintsliced = rowprint[3:8]                #picks values from 2008 to 2012
+    rowprint = read_csv_row(int(userinput))                         #prints the fuel row, showing the values
+    rowprintsliced = rowprint[3:8]                                  #picks values from 2008 to 2012
     fuelname = read_csv_row(int(userinput))        
-    rowprintname = fuelname[:1]                   #picks the fuel name only
-    rowprintappend = tuple(rowprintname) + tuple(rowprintsliced) #append fuel name and the values together, making a new tuple
-    output = ', '.join(map(str, rowprintappend))       #removes the brackets
+    rowprintname = fuelname[:1]                                     #picks the fuel name only
+    rowprintappend = tuple(rowprintname) + tuple(rowprintsliced)    #append fuel name and the values together, making a new tuple
+    output = ', '.join(map(str, rowprintappend))                    #removes the brackets
 
     row = read_csv_row(int(userinput)) 
-    slicing = row[3:8]                            #picks values from 2008 to 2012
+    slicing = row[3:8]                                              #picks values from 2008 to 2012
     sliced = tuple(map(int, slicing))
 
     total = sum(sliced)
@@ -55,34 +47,30 @@ def mean_value_of_selected_fuel_type():
     print("mean: ", meanvalue)
 
     return meanvalue
- #converts the raw csv to python dict
+                                                                   
 
 
 
-def valuesabovemean(meanvaluefrommenu):
-    with open("annualmvpop_dataset.csv", "r") as f:    
-        csvdata = csv.DictReader(f, delimiter=",")
-        data = [row for row in csvdata]
+def valuesabovemean(meanvaluefrommenu):                                #This function finds values greater than the mean population shown in the menu
+    with open("annualmvpop_dataset.csv", "r") as f:                    #|
+        csvdata = csv.DictReader(f, delimiter=",")                     #|- Opens the Csv file as a Dictionary 
+        data = [row for row in csvdata]                                #|
 
-        # fuel_type = 'Diesel'
-        years = ['2008', '2009', '2010', '2011', '2012']
-
-        valuelist = []
         
-        # print(data)
+        years = ['2008', '2009', '2010', '2011', '2012']               # Specify the years of population it will use/search
 
-        # for dictionary in data:
-        #     if dictionary.get("Fuel Type") == fuel_type:
-        # data = sorted(data, key=lambda x: x['year'])
+        valuelist = []                                                 #initialize a list called "valuelist"
+        
+    
 
-        for row in data:
-            fuel_type = row['Fuel Type']
-            for year in years:
-                if year in row:
-                    value = row[year]
-                    if int(value) > meanvaluefrommenu:
-
-                        valuelist.append((fuel_type, year, value))      
+        for row in data:                                                   #|
+            fuel_type = row['Fuel Type']                                   #|
+            for year in years:                                             #|
+                if year in row:                                            #|----- Goes through the Dict and finds values that are more than the mean value
+                    value = row[year]                                      #|
+                    if int(value) > meanvaluefrommenu:                     #|
+                                                                           #|
+                        valuelist.append((fuel_type, year, value))         #|
                 
 
         format_string = "{:<27} {:<10} {:<10}"
@@ -98,11 +86,9 @@ def valuesabovemean(meanvaluefrommenu):
 
 
 
-
 def menu():
     global option1 
-    #os.system("cls")
-    # time.sleep(0.5)
+
     print("")
     with open("annualmvpop_dataset.csv", "r") as f:
         csvfile = csv.reader(f)
@@ -135,7 +121,7 @@ def menu():
                 
     
         elif option1 == "2":
-            # os.system("cls")
+            
 
             print("1) Diesel")
             print("2) Diesel-Electric")
@@ -166,7 +152,7 @@ def menu():
             
 
         
-            # os.system("cls")
+            
 
 
         elif option1 == "3":
@@ -180,10 +166,10 @@ def menu():
 
         
         elif option1 == "4":
-            print(" -----------------------------------------------------")
-            print("|A) Petrol-Electric and Petrol-CNG vehicle population |")
-            print("|B) Petrol-Electric and Diesel population             |")
-            print(" -----------------------------------------------------")
+            print(" -------------------------------------------------------------------")
+            print("|A) Line graph of Petrol-Electric and Petrol-CNG vehicle population |")
+            print("|B) Bar graph of Petrol-Electric and Diesel population              |")
+            print(" -------------------------------------------------------------------")
             option2 = input("Select option A or B:" )
 
 
@@ -196,6 +182,7 @@ def menu():
                 row1 = read_csv_row(6)
                 rowsliced1 = row1[1:]
                 convertrow1 = tuple(map(int, rowsliced1))
+                
 
                 row2 = read_csv_row(5)
                 rowsliced2 = row2[1:]
@@ -264,11 +251,26 @@ def menu():
 
                 menu()
 
+
+            else:
+                print("You have entered an invalid option. Please try again")
+                time.sleep(2)
+                menu()
             
+
+
+
 
         elif option1 == "5":
             exit()
 
+
+
+
+        else:
+            print("You have entered an invalid option. Please try again")
+            time.sleep(2)
+            menu()
 
 menu()
 
