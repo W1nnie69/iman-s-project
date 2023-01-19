@@ -156,9 +156,10 @@ def menu():
 
 
         elif option1 == "3":
-            print("still in testing")
-            break
-
+            print("Code is still in development")
+            time.sleep(2)
+            menu()
+            
 
 
 
