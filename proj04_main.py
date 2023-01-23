@@ -1,200 +1,220 @@
-import csv
 from sys import exit
-import matplotlib.pyplot as plt
 import time
-from module import read_csv_row, mean_value_of_selected_fuel_type, valuesabovemean
+import module as md
+import data as d
 
 
 
+ 
 
-def menu():
-    global option1 
+print("")
 
-    print("")
-    with open("annualmvpop_dataset.csv", "r") as f:
-        csvfile = csv.reader(f)
-        for line in csvfile:
-            print(line)
+d.fulldatatable()
 
-    print("")
-    print(" -------------------------------------------------------------------------------------------------------------------")
-    print("| 1)Vehicle Population of Petrol-ELectric fuel type from 2006 - 2018                                                |")                      
-    print("| 2)Mean of selected vehicle fuel type from 2008-2012 | Years and vehicle population which exceeded the mean        |")
-    print("| 3)Fuel type of vehicle and year which has decreased by at least 5%                                                |")
-    print("| 4)Line plot of Petrol-Electric and Petrol-CNG for each year and bar chart of Petrol-Electric and Diesel           |")
-    print("| 5)Quit                                                                                                            |")
-    print(" -------------------------------------------------------------------------------------------------------------------")
+print("")
+print(" -------------------------------------------------------------------------------------------------------------------")
+print("| 1)Vehicle Population of Petrol-ELectric fuel type from 2006 - 2018                                                |")                      
+print("| 2)Mean of selected vehicle fuel type from 2008-2012 | Years and vehicle population which exceeded the mean        |")
+print("| 3)Fuel type of vehicle and year which has decreased by at least 5%                                                |")
+print("| 4)Line plot of Petrol-Electric and Petrol-CNG for each year and bar chart of Petrol-Electric and Diesel           |")
+print("| 5)Quit                                                                                                            |")
+print(" -------------------------------------------------------------------------------------------------------------------")
 
-    option1 = input("Please enter which an option:" ) 
+option1 = input("Please enter which an option:" ) 
 
-    loop = True
-    while loop == True:
+loop = True
+while loop == True:
 
-        if option1 == "1":
-            row = read_csv_row(6)
-            output = ', '.join(map(str, row))
-            print(output)
+    if option1 == "1":
+        row = md.read_csv_row(6)
+        # output1 = ', '.join(map(str, row))
 
-            print("")
-            input("Press Enter to Continue")
-            
-            menu()
-                
+        colrow = d.printcolumnname()
+        # output2 = ' '.join(colrow)
+
+        format_string = "{:<16} {:<5} {:<5} {:<5} {:<5} {:<5} {:<5} {:<5} {:<5} {:<5} {:<5} {:<5} {:<5} {:<5}"
+
+        print("")
+        print(format_string.format(colrow[0], colrow[1], colrow[2], colrow[3], colrow[4], colrow[5], colrow[6], colrow[7], colrow[8], colrow[9], colrow[10], colrow[11], colrow[12], colrow[13]))
+        print(format_string.format(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], row[13]))
+
+        
     
-        elif option1 == "2":
-            
 
-            print("1) Diesel")
-            print("2) Diesel-Electric")
-            print("3) Electric")
-            print("4) Petrol")
-            print("5) Petrol-CNG")
-            print("6) Petrol-Electric")
-            print("7) Petrol-Electric (Plug-In)")
-            print("")
+        print("")
+        input("Press Enter to Continue")
 
+        print("")
+        print(" -------------------------------------------------------------------------------------------------------------------")
+        print("| 1)Vehicle Population of Petrol-ELectric fuel type from 2006 - 2018                                                |")                      
+        print("| 2)Mean of selected vehicle fuel type from 2008-2012 | Years and vehicle population which exceeded the mean        |")
+        print("| 3)Fuel type of vehicle and year which has decreased by at least 5%                                                |")
+        print("| 4)Line plot of Petrol-Electric and Petrol-CNG for each year and bar chart of Petrol-Electric and Diesel           |")
+        print("| 5)Quit                                                                                                            |")
+        print(" -------------------------------------------------------------------------------------------------------------------")
+
+        option1 = input("Please enter which an option:" ) 
         
-            x = mean_value_of_selected_fuel_type()
-            
-            y = int(x)
-
-            print("")
-
-            input("Press Enter to Continue")
-            
-            print("")
-
-            valuesabovemean(y)
-
-            print("")
-            input("Press Enter to Continue")
-
-            menu()
-            
-
         
             
 
+    elif option1 == "2":
+        
 
-        elif option1 == "3":
-            print("Code is still in development")
-            time.sleep(2)
-            menu()
-            
+        print("1) Diesel")
+        print("2) Diesel-Electric")
+        print("3) Electric")
+        print("4) Petrol")
+        print("5) Petrol-CNG")
+        print("6) Petrol-Electric")
+        print("7) Petrol-Electric (Plug-In)")
+        print("")
 
+    
+        x = md.mean_value_of_selected_fuel_type()
+        
+        y = int(x)
 
+        print("")
 
+        input("Press Enter to Continue")
+        
+        print("")
 
+        md.valuesabovemean(y)
+
+        print("")
+        input("Press Enter to Continue")
 
         
-        elif option1 == "4":
+        print("")
+        print(" -------------------------------------------------------------------------------------------------------------------")
+        print("| 1)Vehicle Population of Petrol-ELectric fuel type from 2006 - 2018                                                |")                      
+        print("| 2)Mean of selected vehicle fuel type from 2008-2012 | Years and vehicle population which exceeded the mean        |")
+        print("| 3)Fuel type of vehicle and year which has decreased by at least 5%                                                |")
+        print("| 4)Line plot of Petrol-Electric and Petrol-CNG for each year and bar chart of Petrol-Electric and Diesel           |")
+        print("| 5)Quit                                                                                                            |")
+        print(" -------------------------------------------------------------------------------------------------------------------")
+
+        option1 = input("Please enter which an option:" )
+        
+
+    
+        
+
+
+    elif option1 == "3":
+        print("Code is still in development")
+        time.sleep(2)
+        
+
+
+        print("")
+        print(" -------------------------------------------------------------------------------------------------------------------")
+        print("| 1)Vehicle Population of Petrol-ELectric fuel type from 2006 - 2018                                                |")                      
+        print("| 2)Mean of selected vehicle fuel type from 2008-2012 | Years and vehicle population which exceeded the mean        |")
+        print("| 3)Fuel type of vehicle and year which has decreased by at least 5%                                                |")
+        print("| 4)Line plot of Petrol-Electric and Petrol-CNG for each year and bar chart of Petrol-Electric and Diesel           |")
+        print("| 5)Quit                                                                                                            |")
+        print(" -------------------------------------------------------------------------------------------------------------------")
+
+        option1 = input("Please enter which an option:" )
+        
+
+
+
+
+
+    
+    elif option1 == "4":
+        print(" -------------------------------------------------------------------")
+        print("|A) Line graph of Petrol-Electric and Petrol-CNG vehicle population |")
+        print("|B) Bar graph of Petrol-Electric and Diesel population              |")
+        print("|C) Go back to main menu                                            |")
+        print(" -------------------------------------------------------------------")
+        option2 = input("Select option A or B:" )
+
+
+        if option2 == "A":
+
+            md.optionA()
+
             print(" -------------------------------------------------------------------")
             print("|A) Line graph of Petrol-Electric and Petrol-CNG vehicle population |")
             print("|B) Bar graph of Petrol-Electric and Diesel population              |")
+            print("|C) Go back to main menu                                            |")
+            print(" -------------------------------------------------------------------")
+            option2 = input("Select option A or B:" )
+            
+            
+        
+        if option2 == "B":
+
+            md.optionB()
+
+            print(" -------------------------------------------------------------------")
+            print("|A) Line graph of Petrol-Electric and Petrol-CNG vehicle population |")
+            print("|B) Bar graph of Petrol-Electric and Diesel population              |")
+            print("|C) Go back to main menu                                            |")
             print(" -------------------------------------------------------------------")
             option2 = input("Select option A or B:" )
 
-
-            if option2 == "A":
-
-                years = [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018]
-                petrol_electric_population = []
-                petrol_cng_population = []
-
-                row1 = read_csv_row(6)
-                rowsliced1 = row1[1:]
-                convertrow1 = tuple(map(int, rowsliced1))
-                
-
-                row2 = read_csv_row(5)
-                rowsliced2 = row2[1:]
-                convertrow2 = tuple(map(int, rowsliced2))
-
-
-                petrol_electric_population = list(convertrow1)
-                petrol_cng_population = list(convertrow2)
-
-
-                print(petrol_electric_population)
-                print(petrol_cng_population)
-
-
-                plt.plot(years, petrol_electric_population, label='Petrol-Electric')
-                plt.plot(years, petrol_cng_population, label='Petrol-CNG')
-
-
-                plt.xlabel('Year')
-                plt.ylabel('Population')
-                plt.title('Difference between Petrol-Electric and Petrol-CNG vehicle population')
-                plt.legend()
-                plt.show()
-
-
-                print("")
-                input("Press Enter to Continue")
-
-                menu()
             
-            if option2 == "B":
+        if option2 == "C":
+            print("")
+            d.fulldatatable()
 
-                years = [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018]
-                petrol_electric_population = []
-                diesel_population = []
+            print("")
+            print(" -------------------------------------------------------------------------------------------------------------------")
+            print("| 1)Vehicle Population of Petrol-ELectric fuel type from 2006 - 2018                                                |")                      
+            print("| 2)Mean of selected vehicle fuel type from 2008-2012 | Years and vehicle population which exceeded the mean        |")
+            print("| 3)Fuel type of vehicle and year which has decreased by at least 5%                                                |")
+            print("| 4)Line plot of Petrol-Electric and Petrol-CNG for each year and bar chart of Petrol-Electric and Diesel           |")
+            print("| 5)Quit                                                                                                            |")
+            print(" -------------------------------------------------------------------------------------------------------------------")
 
-                row1 = read_csv_row(6)
-                rowsliced1 = row1[1:]
-                convertrow1 = tuple(map(int, rowsliced1))
-
-                row2 = read_csv_row(1)
-                rowsliced2 = row2[1:]
-                convertrow2 = tuple(map(int, rowsliced2))
-
-
-                petrol_electric_population = list(convertrow1)
-                diesel_population = list(convertrow2)
-
-
-                print(petrol_electric_population)
-                print(diesel_population)
-
-
-                plt.bar(years, petrol_electric_population, label='Petrol-Electric')
-                plt.bar(years, diesel_population, label='Diesel')
-
-
-                plt.xlabel('Year')
-                plt.ylabel('Population')
-                plt.title('Difference between Petrol-Electric and Diesel vehicle population')
-                plt.legend()
-                plt.show()
-                
-                print("")
-                input("Press Enter to Continue")
-
-                menu()
-
-
-            else:
-                print("You have entered an invalid option. Please try again")
-                time.sleep(2)
-                menu()
+            option1 = input("Please enter which an option:" ) 
             
-
-
-
-
-        elif option1 == "5":
-            exit()
-
-
-
 
         else:
             print("You have entered an invalid option. Please try again")
             time.sleep(2)
-            menu()
 
-menu()
+            print(" -------------------------------------------------------------------")
+            print("|A) Line graph of Petrol-Electric and Petrol-CNG vehicle population |")
+            print("|B) Bar graph of Petrol-Electric and Diesel population              |")
+            print("|C) Go back to main menu                                            |")
+            print(" -------------------------------------------------------------------")
+            option2 = input("Select option A or B:" )
+        
+
+
+
+
+    elif option1 == "5":
+        exit()
+
+
+
+
+    else:
+        print("You have entered an invalid option. Please try again")
+        time.sleep(1)
+        
+        d.fulldatatable()
+
+        print("")
+        print(" -------------------------------------------------------------------------------------------------------------------")
+        print("| 1)Vehicle Population of Petrol-ELectric fuel type from 2006 - 2018                                                |")                      
+        print("| 2)Mean of selected vehicle fuel type from 2008-2012 | Years and vehicle population which exceeded the mean        |")
+        print("| 3)Fuel type of vehicle and year which has decreased by at least 5%                                                |")
+        print("| 4)Line plot of Petrol-Electric and Petrol-CNG for each year and bar chart of Petrol-Electric and Diesel           |")
+        print("| 5)Quit                                                                                                            |")
+        print(" -------------------------------------------------------------------------------------------------------------------")
+
+        option1 = input("Please enter which an option:" )
+
+
 
 
 

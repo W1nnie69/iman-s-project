@@ -1,8 +1,0 @@
- foc = input()
-            print("foc=",foc)
-
-            fueloptionconvertion()
-
-            a = [float(y) for y in line[1:]]
-            print(a)
-            print(sum(a)/len(a))
