@@ -29,3 +29,4 @@ def printcolumnname():                                     #This function ables 
         for i, row in enumerate(reader):                          #Emuerates the data and returns an iterator that produces tuples containing 
             if i == 0:
                 return row                                        #the index and the value of each element of the object.
+

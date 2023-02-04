@@ -43,6 +43,9 @@ while loop == True:
 
         print("")
         input("Press Enter to Continue")
+        print("")
+        
+        d.fulldatatable()
 
         print("")
         print(" -------------------------------------------------------------------------------------------------------------------")
@@ -73,7 +76,9 @@ while loop == True:
     
         x = md.mean_value_of_selected_fuel_type()
         
-        y = int(x)
+        y = tuple(map(int, x))
+
+        a, b = y
 
         print("")
 
@@ -81,11 +86,13 @@ while loop == True:
         
         print("")
 
-        md.valuesabovemean(y)
+        md.valuesabovemean(a, b)
 
         print("")
         input("Press Enter to Continue")
+        print("")
 
+        d.fulldatatable()
         
         print("")
         print(" -------------------------------------------------------------------------------------------------------------------")
@@ -107,7 +114,9 @@ while loop == True:
         print("Code is still in development")
         time.sleep(2)
         
+        print("")
 
+        d.fulldatatable()
 
         print("")
         print(" -------------------------------------------------------------------------------------------------------------------")
@@ -127,12 +136,13 @@ while loop == True:
 
     
     elif option1 == "4":
+        print("")
         print(" -------------------------------------------------------------------")
         print("|A) Line graph of Petrol-Electric and Petrol-CNG vehicle population |")
         print("|B) Bar graph of Petrol-Electric and Diesel population              |")
         print("|C) Go back to main menu                                            |")
         print(" -------------------------------------------------------------------")
-        option2 = input("Select option A or B:" )
+        option2 = input("Select option A, B or C:" )
 
 
         if option2 == "A":
@@ -144,7 +154,7 @@ while loop == True:
             print("|B) Bar graph of Petrol-Electric and Diesel population              |")
             print("|C) Go back to main menu                                            |")
             print(" -------------------------------------------------------------------")
-            option2 = input("Select option A or B:" )
+            option2 = input("Select option A, B or C:" )
             
             
         
@@ -157,11 +167,12 @@ while loop == True:
             print("|B) Bar graph of Petrol-Electric and Diesel population              |")
             print("|C) Go back to main menu                                            |")
             print(" -------------------------------------------------------------------")
-            option2 = input("Select option A or B:" )
+            option2 = input("Select option A, B or C:" )
 
             
         if option2 == "C":
             print("")
+
             d.fulldatatable()
 
             print("")
@@ -185,7 +196,7 @@ while loop == True:
             print("|B) Bar graph of Petrol-Electric and Diesel population              |")
             print("|C) Go back to main menu                                            |")
             print(" -------------------------------------------------------------------")
-            option2 = input("Select option A or B:" )
+            option2 = input("Select option A, B or C:" )
         
 
 
@@ -200,7 +211,8 @@ while loop == True:
     else:
         print("You have entered an invalid option. Please try again")
         time.sleep(1)
-        
+        print("")
+
         d.fulldatatable()
 
         print("")
