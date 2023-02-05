@@ -105,6 +105,82 @@ def valuesabovemean(meanvaluefrommenu, fuelnumber): #This function finds values 
 
 
 
+def display_vehicle_population(selected_vehicle_type):
+
+    fueldict = {
+        "1": "Diesel",
+        "2": "Diesel-Electric",
+        "3": "Electric",
+        "4": "Petrol",
+        "5": "Petrol-CNG",
+        "6": "Petrol-Electric",
+        "7": "Petrol-Electric (Plug-In)"
+}
+    x = str(selected_vehicle_type)
+
+    if x in fueldict:
+        fuel = fueldict[x]
+    
+
+#     # Filter the data to get only the selected vehicle type
+    data = opencsvAsDict()
+
+#     years = ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018']
+
+#     filtered_data = [d for d in data if d["Fuel Type"] == fuel]
+    
+#     # Calculate the vehicle population for each year
+#     year_population = {}
+#     for d in filtered_data:
+#         if years not in year_population:
+#             year_population[d["year"]] = 0
+#         year_population[d["year"]] += d["population"]
+    
+#     # Display the vehicle population and the years with a decrease of at least 5%
+#     print("Vehicle Population:")
+#     for year, population in year_population.items():
+#         print(f"{year}: {population}")
+        
+#         # Check if the current year's population has decreased by at least 5% compared to the previous year
+#         previous_population = year_population.get(year - 1, 0)
+#         if previous_population > 0 and population < previous_population * 0.95:
+#             print(f"{year} has decreased by at least 5% compared to the previous year.")
+
+
+    year_population = {}
+    for d in data:
+        if d["Fuel Type"] == fuel:
+            for year, population in d.items():
+                if year == "Fuel Type":
+                    continue
+                population = int(population)
+                if population == 0:
+                    raise ValueError("population cannot be zero")
+                if year not in year_population:
+                    year_population[year] = population
+                else:
+                    year_population[year] += population
+
+    for year, population in year_population.items():
+        previous_year = str(int(year) - 1)
+        if previous_year in year_population:
+            change = (population - year_population[previous_year]) / year_population[previous_year] * 100
+            if change < -5:
+                print(f"In {year}, the population of {fuel} vehicles decreased by {abs(change):.2f}% compared to {previous_year}")
+
+    if change > -5:
+        print("There are no vechicle population above 5%")
+
+    # try:
+    #     # code that may raise a ValueError
+    #     display_vehicle_population(data, "Petrol")
+    # except ValueError as e:
+    #     # code to handle the error
+    #     print(e)
+
+
+
+
 
 def optionA():
     years = [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018]

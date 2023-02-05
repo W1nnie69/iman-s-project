@@ -30,3 +30,5 @@ def printcolumnname():                                     #This function ables 
             if i == 0:
                 return row                                        #the index and the value of each element of the object.
 
+data = opencsvAsDict()
+print(data)

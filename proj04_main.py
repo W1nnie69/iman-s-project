@@ -111,9 +111,39 @@ while loop == True:
 
 
     elif option1 == "3":
-        print("Code is still in development")
-        time.sleep(2)
         
+        print("1) Diesel")
+        print("2) Diesel-Electric")
+        print("3) Electric")
+        print("4) Petrol")
+        print("5) Petrol-CNG")
+        print("6) Petrol-Electric")
+        print("7) Petrol-Electric (Plug-In)")
+        print("")
+
+        userinput = input("Please choose a fuel type: ")
+        print("")
+
+        try:
+            md.display_vehicle_population(userinput)
+
+        except ValueError as e:
+            print(e)
+            print("")
+
+
+
+        input("Press enter to continue")
+
+        
+
+
+
+
+
+
+
+
         print("")
 
         d.fulldatatable()
