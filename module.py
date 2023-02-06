@@ -2,14 +2,6 @@ import csv
 import matplotlib.pyplot as plt
 from data import opencsvAsDict, read_csv_row
 
-# def read_csv_row(row_number):                                     #This function ables you to specify which row from the csv you wanna output
-#     with open('annualmvpop_dataset.csv', 'r') as f:               #Opens the csv                       
-#         reader = csv.reader(f, delimiter=",")                     #Reads the csv, data of csv = "reader"
-#         for i, row in enumerate(reader):                          #Emuerates the data and returns an iterator that produces tuples containing 
-#             if i == row_number:
-#                 return row                                        #the index and the value of each element of the object.
-
-
 
 
 def mean_value_of_selected_fuel_type():
@@ -125,26 +117,6 @@ def display_vehicle_population(selected_vehicle_type):
 #     # Filter the data to get only the selected vehicle type
     data = opencsvAsDict()
 
-#     years = ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018']
-
-#     filtered_data = [d for d in data if d["Fuel Type"] == fuel]
-    
-#     # Calculate the vehicle population for each year
-#     year_population = {}
-#     for d in filtered_data:
-#         if years not in year_population:
-#             year_population[d["year"]] = 0
-#         year_population[d["year"]] += d["population"]
-    
-#     # Display the vehicle population and the years with a decrease of at least 5%
-#     print("Vehicle Population:")
-#     for year, population in year_population.items():
-#         print(f"{year}: {population}")
-        
-#         # Check if the current year's population has decreased by at least 5% compared to the previous year
-#         previous_population = year_population.get(year - 1, 0)
-#         if previous_population > 0 and population < previous_population * 0.95:
-#             print(f"{year} has decreased by at least 5% compared to the previous year.")
 
 
     year_population = {}
@@ -167,16 +139,10 @@ def display_vehicle_population(selected_vehicle_type):
             change = (population - year_population[previous_year]) / year_population[previous_year] * 100
             if change < -5:
                 print(f"In {year}, the population of {fuel} vehicles decreased by {abs(change):.2f}% compared to {previous_year}")
+            break
 
     if change > -5:
-        print("There are no vechicle population above 5%")
-
-    # try:
-    #     # code that may raise a ValueError
-    #     display_vehicle_population(data, "Petrol")
-    # except ValueError as e:
-    #     # code to handle the error
-    #     print(e)
+        print("There are no percentage decrease above 5%")
 
 
 
